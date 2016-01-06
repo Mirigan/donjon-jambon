@@ -1,0 +1,280 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html>
+    <head>
+   	 <script src="jquery.js"></script>
+   	 <script src="sorcery.js"></script>
+   	 <link type="text/css" rel="stylesheet" href="style.css" />
+   	 <meta lang="fr" xml:lang="fr" content="text/html;charset=UTF-8" http-equiv="Content-Type">
+   	 <title>Donjon & Jambon</title>
+    </head>
+   	 
+    <body>
+   	 <div id="status">
+   		 <div class="life">
+   			 Name : <span class="myName">--</span>
+   		 </div>
+   		 <div class="life">
+   			 Life : <span class="value">--</span>
+   		 </div>
+   	 </div>
+
+   	 <div class="section" id="start">
+   		 <p>
+   			 Quel est le nom de votre héros ?
+   		 </p>
+   		 <p>
+   			 <input type="text" id="myName" />
+   		 </p>
+   		 <p>
+   			 <button type="button" id="submitName">
+   				 Valider
+   			 </button>
+   		 </p>
+   	 </div>
+    
+   	 <div class="section" id="intro">
+   		 <h2>Bienvenue dans le monde de Donjon & Jambon</h2>
+   		 <p>Un peu comme Donjon & Dragon mais en mieux, beaucoup mieux !</p>
+
+   		 <p>
+   			 Petite description de vos compagnons. Car en effet vous êtes une compagnie composée de courageux guerriers fières de défendre la liberté et les plus pauvres  !
+   			 <br/>
+   			 ...
+   			 <br/>
+   			 ...
+   			 <br/>
+   			 ...
+   			 <br/>
+
+   			 A mince pardon désolé je me suis trompé de groupe ... désolé...
+   		 </p>
+
+   		 <p>
+   			 Donc vous êtes quatre bons amis mais bon quand il s'agit de sauver sa peau il n'y a pas de problème, vous êtes les rois dans ce domaine. Même si pour fuir vous n'hésitez pas sacrifier l'un d'entre vous. En effet vous avez déjà vu une demi douzaine de personnes se faire tuer alors que preniez la fuite. Bravo les mecs, vous êtes des as!
+   		 </p>
+
+   		 <p>
+   			 Le groupe est composé par:
+   			 <ul>
+   				 <li>
+   					 Mirgan, un nain paladin de niveau 10, vénérant Khornettoh, dieu de la violence et du sang. En gros c'est un bourrin !
+   					 <br/>
+   					 Équipé d'une masse qui fait sa taille, il n'hésite pas a foncer dans la tas et emboutir le plus de crânes possible !
+   				 </li>
+   				 <li>
+   					 Ehel, elfe magicien de niveau 10, sa spécialité ? la nécromancie !
+   					 <br/>
+   					 Fourbe, comme tout les elfes, toujours accompagné par son chien zombi, il adore cependant voir le nain défoncer des crânes pour faire revivre les morts et avoir de nouveaux serviteurs !
+   				 </li>
+   				 <li>
+   					 Nérael, le barbare pirate de niveau 10, alors lui à part qu'il s'appelle Nérael on ne sait pas beaucoup de chose.
+   					 <br/>
+   					 Il aime frapper, boire et faire exploser des cages thoraciques...
+   				 </li>
+   			 </ul>
+   		 </p>
+   		 <p>
+   			 Et enfin vous !
+   			 <br/>
+   			 L'humain voleur, fourbe de nature, attiré par l'argent, les femmes et les chats... Désolé, mais t'es un peu le boulet de service de l'équipe et pour cause tu n'es que niveau 7 et oui c'est bien d'être furtif mais avec des bourrins pareil ça ne rapporte pas d'expérience !
+   		 </p>
+   		 
+   		 <action name="reset"/>
+   		 
+   		 <button go="wakeUp">Commencer l'aventure !</button>
+   	 </div>
+    
+   	 
+   	 <div class="section" id="wakeUp">
+   		 Vous ouvrez les yeux... et vous voyez vos trois autres compagnons encore dans les vapes...
+   		 
+   		 <action name="start"/>
+   		 
+   		 <button go="campement">Se relever</button>
+   		 <button go="wakeUpLater">5 minutes de plus ...</button>
+   	 </div>
+   	 
+   	 <div class="section" id="wakeUpLater">
+   		 PAFF !! Pour vous réveiller, Mirigan vous donne un coup de pied dans le ventre
+
+   		 <br/>
+   		 Par chance c'est pas Nérael.
+
+   		 <action name="hit"/>
+   		 
+   		 <button go="stage1">Se lever</button>
+   	 </div>
+
+   	 <div class="section" id="campement">
+   		 Vous vous réveillez mais vos compagnons dorment encore bien.
+   		 
+   		 <button go="stage1">Attendre que les autres se lèvent</button>
+   		 <button go="hitMiri">Donner un coup de pied à Mirigan</button>
+   		 <button go="hitEhel">Donner un coup de pied à Ehel</button>
+   		 <button go="hitNerael">Donner un coup de pied à Nérael (déconseillé)</button>
+   	 </div>
+
+   	 <div class="section" id="hitMiri">
+   		 En se réveillant, il essaye de vous taper, mais il est un peu court, vous avez eu chaud !
+   		 <br/>
+   		 Bien joué, toujours s'en prendre au plus petit !
+   		 
+   		 <button go="stage1">suite</button>
+   	 </div>
+
+   	 <div class="section" id="hitEhel">
+   		 En se réveillant, son chien vous attaque vous perdez un point de vie!
+   		 <br/>
+   		 Bien joué !
+
+   		 <action name="hit"/>
+   		 
+   		 <button go="stage1">suite</button>
+   	 </div>
+
+   	 <div class="section" id="hitNerael">
+   		 Heuuuu... il se lève et vous enfonce vos côtes dans vos poumons
+   		 <br/>
+   		 Faut pas le chercher lui !
+
+   		 <action name="doubleHit"/>
+   		 
+   		 <button go="stage1">suite</button>
+   	 </div>
+   	 
+   	 <div class="section" id="stage1">
+   		 Tout le monde est enfin levé. Maintenant que faire ?
+   		 <button go="taverneDirection">Aller à la taverne</button>
+   		 <button go="taverneDirection">Aller à la taverne</button>
+   		 <button go="taverneDirection">Aller à la taverne</button>
+   		 <button go="public">L'avis du public?</button>
+   	 </div>
+    
+   	 
+   	 <div class="section" id="public">
+   		 <p>Dommage le public veux du sang...</p>
+   		 <p>(Enfin dommage avec un peu de chance il vous tuera rapidement, mouahahah... !)</p>
+   		 
+   		 <button go="figth">Se préparer au combat</button>
+   	 </div>
+   	 
+   	 
+   	 <div class="section" id="taverneDirection">
+   		 <p>
+   			 Sur le chemin de la taverne vous entendez des bruits bizarres...
+   		 </p>
+   		 <button go="figth">Se préparer au combat</button>
+   	 </div>
+   	 
+   	 
+   	 <div class="section" id="figth">
+   		 <p>En effet, une bande de 5 trolls vous tombe dessus.</p>
+   		 <p>Petite précision, le combat se déroule dans une clairière, c'est donc une embuscade !</p>
+   		 
+   		 <p>Un des trolls se jette sur vous ! Heureusement, avec sa masse il ne fait qu'érafler votre gros orteil gauche.</p>
+   		 <p>Vous perdez quand même un point de vie!</p>
+
+   		 <action name="hit"/>
+   		 
+   		 <button go="fuite">Aller se cacher dans un arbre</button>
+   		 <button go="revenche">Se venger et tenter un pas de côté afin de sauter au-dessus du troll et lui couper la gorge !</button>
+   	 </div>
+
+   	 <div class="section" id="revenche">
+   		 <p>Et ceci est un échec total... </p>
+   		 <p>En effet le troll vous attrape la jambe et commence a vous éclater par terre.</p>
+   		 <p>Une fois au sol, il encastre sa masse dans votre tête</p>
+   		 <action name="doubleHit"/>
+   	 </div>
+
+   	 <div class="section" id="fuite">
+   		 <p>Rapide, vif et sûr de vos techniques de combat vous courez vers un arbre.</p>
+   		 <p>Lâche !!!</p>
+   		 <p>Mais bon vous êtes un voleur, on ne pouvait en attendre plus...</p>
+   		 <p>Une fois dans l'arbre, vous êtes content mais pas pour longtemps car en effet, un autre troll se joint au précédent, et tous les deux commencent à frapper l'arbre afin de le faire tomber.</p>
+
+   		 <button go="arbre">Resté dans l'arbre et se moquer d'eux !</button>
+   		 <button go="sauter">Vous décidez de sauter de l'arbre de d'aller vous mettre a côté du nécromancien afin de l'aider.</button>
+   	 </div>
+
+   	 <div class="section" id="sauter">
+   		 <p>En sautant de l'arbre vous marchez sur les têtes des trolls et vous arrivez à hauteur de votre ami Ehel</p>
+   		 <br/>
+   		 <p>Ce dernier ayant pris possession d'un troll tué par Nérael</p>
+   		 <p>Ensemble vous décidez de vous occuper des deux trolls de l'arbre, les deux autres s'occupent deux autres trolls</p>
+   		 <br/>
+
+   		 <button go="goHit">Laisser le troll zombi attaquer et le suivre de près</button>
+   		 <button go="wait">Attendre</button>
+   	 </div>
+
+   	 <div class="section" id="wait">
+   		 <p>Finalement les deux zombis, le chien et le troll se débrouillent pas si mal.</p>
+   		 <br/>
+   		 <p>Il faut reconnaître que même Ehel est surpris de leur efficacité !</p>
+   		 <br/>
+
+   		 <button go="figthEnd">Voir où en sont les deux bourrins</button>
+   	 </div>
+
+   	 <div class="section" id="goHit">
+   		 <p>Le zombie, avec l'aide du chien, saute sur les trolls. C'est alors que vous décidez de surgir de l'ombre et de couper la gorge de celui de droite.</p>
+   		 <br/>
+   		 <p>Quel magnifique coup de lame !!!! C'est la carotide !! Du sang coule, non que dis-je ? C'est une véritable fontaine de sang !!</p>
+   		 <p>Par un savant calcul, ou juste de la chance, du sang arrive dans les yeux de l'autre trolls, l'aveuglant!</p>
+   		 <br/>
+
+   		 <button go="killTroll">Aller achever le troll</button>
+   		 <button go="killByDog">Le laisser se faire manger par le chien zombi</button>
+   	 </div>
+
+   	 <div class="section" id="killTroll">
+   		 <p>Sûr de votre réussite, vous vous élancez afin de tuer cette créature des enfers !</p>
+   		 <br/>
+   		 <p>Cependant, preuve de votre ignorance, vous glissez dans le sang et vous vous plantez votre dague dans la tête...</p>
+   		 <br/>
+   		 <action name="doubleHit"/>
+   	 </div>
+
+   	 <div class="section" id="killByDog">
+   		 <p>Voyant que le chien s'amuse bien avec le troll, vous décidez de faire deux pas en arrière afin de retourner au côté d'Ehel</p>
+   		 <br/>
+
+   		 <button go="figthEnd">Voir où en sont les deux bourins</button>
+   	 </div>
+
+   	 <div class="section" id="arbre">
+   		 <p>Honnêtement j'aurais pas fait ça mais bon c'est toi qui voit.</p>
+   		 <br/>
+   		 <p>Les deux trolls finissent par faire tomber l'arbre</p>
+   		 <br/>
+   		 <p>Vous perdez un point de vie.</p>
+
+   		 <action name="hit"/>
+
+   		 <button go="fail">Essayer de ce dégager de l'arbre.</button>
+   	 </div>
+
+   	 <div class="section" id="fail">
+   		 <p>Vous êtes toujours bloqué et les trolls vous achèvent dans la joie et la bonne humeur.</p>
+   		 <p>Cependant grce à votre mort le reste du groupe a pu continuer sont chemin vers la taverne!</p>
+
+   		 <action name="doubleHit"/>
+   	 </div>
+   	 
+   	 <div class="section" id="figthEnd">
+   		 <p>Tous les trolls étant morts vous regagnez la taverne non loin sans problème et y passezt la nuit.</p>
+   		 <p>Bravo vous avez survécu à ce combat !</p>
+   		 <p>Mais ne vous reposez pas trop sur vos lauriers ! </p>
+   		 <button id="replay">Retenter !</button>
+   	 </div>
+
+   	 <div class="section" id="death">
+   		 Vous êtes mort(e) ! C'est balot.
+   		 <button id="replay">Retentez sans mourir cette fois !</button>
+   	 </div>
+   	 
+    </body>
+
+</html>
+
